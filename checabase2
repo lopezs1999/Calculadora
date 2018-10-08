@@ -1,0 +1,22 @@
+int checabase2 ()
+{
+    int x;
+    printf ("\n\nA que base desea convertirlo? \n");
+    scanf ("%d", &x);
+    if(x >=17)
+    {
+        printf("\n\n**El numero insertado excede la capacidad,"
+               " por favor ingrese una base menor a 16**\n\n");
+            printf ("\n\nA que base desea convertirlo? \n");
+        scanf ("%d", &x);
+    }
+
+    if(x <=-1)
+    {
+        printf("\n\n**El numero insertado excede la capacidad "
+               " por favor ingrese una base mayor a cero**\n\n");
+        printf ("\n\nA que base desea convertirlo? \n");
+        scanf ("%d", &x);
+    }
+    return x;
+}
