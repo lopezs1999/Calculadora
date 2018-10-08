@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <conio.h>
+
+void llenaArreglo (int num [], int digitos, int base1);
+int convertirAdecimal (int num [], int digitos, int base1, int base2);
+void convertirAbase (int decimal, int base2);
+int checabase ();
+int checabase2 ();
+
+int main()
+{
+    int digitos = 0;
+    int base1, base2;
+    int decimal;
+
+    printf ("Este programa convierte numeros de cierta"
+            "base a una distinta.\n\n");
+    printf ("La base maxima de conversion es Hexadecimal (16).\n\n");
+
+    base1 = checabase ();
+
+    printf ("\nDe cuantos digitos es el numero a convertir?\n=> ");
+    scanf ("%d", &digitos);
+    int num [digitos];
+
+    printf ("\nIntroduce el numero entero a convertir, digito a" 
+            "digito \n comenzando con la cifra más significativa\n\n");
+
+    llenaArreglo (num, digitos, base1);
+    decimal = convertirAdecimal (num, digitos, base1, base2);
+    base2 = checabase2();
+    printf ("\n");
+    convertirAbase (decimal, base2);
+    system ("PAUSE");
+    return 0;
+}
