@@ -1,0 +1,19 @@
+void llenaArreglo (int num [], int digitos, int base1)
+{
+    int i,x, a;
+    for (i=0; i<digitos; i++)
+    {
+        printf ("\nIntroduce el digito numero %d\n", i+1);
+        scanf("%x", &num[i]);
+        if (num[i]>=base1 || num[i]<0)
+        {
+            printf ("\n*Numero no valido para esta base*\n");
+            printf ("\nIntroduce el digito numero %d\n", i+1);
+            scanf("%x", &num[i]);
+        }
+    }
+
+    printf ("\nEl numero que deseas convertir es: ");
+    for (i=0; i<digitos; i++)
+        printf ("%x", num [i]);
+}
