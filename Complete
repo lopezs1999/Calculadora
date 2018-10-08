@@ -3,7 +3,7 @@
 #include <math.h>
 #include <conio.h>
 
-void llenaArreglo (int num [], int digitos, int base1);
+void llenaVector (int num [], int digitos, int base1);
 int convertirAdecimal (int num [], int digitos, int base1, int base2);
 void convertirAbase (int decimal, int base2);
 int checabase ();
@@ -29,7 +29,7 @@ int main() //algoritmo principal
     printf ("\nIntroduce el numero entero a convertir, digito a" 
             "digito \n comenzando con la cifra más significativa\n\n");
 
-    llenaArreglo (num, digitos, base1);
+    llenaVector (num, digitos, base1);
     decimal = convertirAdecimal (num, digitos, base1, base2);
     base2 = checabase2();
     printf ("\n");
@@ -84,7 +84,7 @@ int checabase2 () //validaciones de las bases, subrutina
     return x;
 }
 
-void llenaArreglo (int num [], int digitos, int base1)//Esta subrutina guarda los números que vayamos ingresando en un vector para luego efectuar la conversión
+void llenaVector (int num [], int digitos, int base1)//Esta subrutina guarda los números que vayamos ingresando en un vector para luego efectuar la conversión
 {
     int i,x, a;
     for (i=0; i<digitos; i++)
