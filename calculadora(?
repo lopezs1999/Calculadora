@@ -1,0 +1,10 @@
+int convertirAdecimal (int num [], int digitos, int base1, int base2)
+{
+    int i, pot;
+    int x=0;
+    for (i=digitos-1, pot=0; i>=0, pot<digitos; i--, pot++)
+    {
+        x+= (pow(base1, pot)* num[i]);
+    }
+    return x;
+}
