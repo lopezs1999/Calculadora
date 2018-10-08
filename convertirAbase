@@ -1,0 +1,19 @@
+{
+    int cociente,residuo,cont, i,j;
+    int conv [50];
+    i=0;
+    do{
+        cociente = decimal/base2;
+        residuo = decimal%base2;
+        conv[i] = residuo;
+        decimal = cociente;
+        i+=1;
+    }while (cociente>0);
+
+    printf("La conversion es: ");
+    for (cont=i-1; cont>=0; cont--)
+    {
+        printf("%x", conv [cont]);
+    }
+    printf("\n\n");
+}
