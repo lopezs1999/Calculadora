@@ -1,0 +1,137 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <conio.h>
+
+void llenaArreglo (int num [], int digitos, int base1);
+int convertirAdecimal (int num [], int digitos, int base1, int base2);
+void convertirAbase (int decimal, int base2);
+int checabase ();
+int checabase2 ();
+
+int main() //algoritmo principal
+{
+    int digitos = 0;
+    int base1, base2;
+    int decimal;
+    system ("color f1");
+
+    printf ("Este programa convierte numeros de cierta"
+            "base a una distinta.\n\n");
+    printf ("La base maxima de conversion es Hexadecimal (16).\n\n");
+
+    base1 = checabase ();
+
+    printf ("\nDe cuantos digitos es el numero a convertir?\n=> ");
+    scanf ("%d", &digitos);
+    int num [digitos];
+
+    printf ("\nIntroduce el numero entero a convertir, digito a" 
+            "digito \n comenzando con la cifra más significativa\n\n");
+
+    llenaArreglo (num, digitos, base1);
+    decimal = convertirAdecimal (num, digitos, base1, base2);
+    base2 = checabase2();
+    printf ("\n");
+    convertirAbase (decimal, base2);
+    system ("PAUSE");
+    return 0;
+}
+
+int checabase ()//validaciones de las bases, subrutina
+{
+    int x;
+    printf ("De que base es el numero a convertir?\n=> ");
+    scanf ("%d", &x);
+    if(x >=17)
+    {
+        printf("\n\n**El numero insertado excede la capacidad de"
+               "por favor ingrese una base menor a 16**\n\n");
+        printf ("De que base es el numero a convertir?\n");
+        scanf ("%d", &x);
+    }
+
+    if(x <=-1)
+    {
+        printf("\n\n**El numero insertado excede la capacidad,"
+               "por favor ingrese una base mayor a cero**\n\n");
+        printf ("De que base es el numero a convertir?\n");
+        scanf ("%d", &x);
+    }
+    return x;
+}
+
+int checabase2 () //validaciones de las bases, subrutina
+{
+    int x;
+    printf ("\n\nA que base desea convertirlo? \n");
+    scanf ("%d", &x);
+    if(x >=17)
+    {
+        printf("\n\n**El numero insertado excede la capacidad,"
+               " por favor ingrese una base menor a 16**\n\n");
+            printf ("\n\nA que base desea convertirlo? \n");
+        scanf ("%d", &x);
+    }
+
+    if(x <=-1)
+    {
+        printf("\n\n**El numero insertado excede la capacidad "
+               " por favor ingrese una base mayor a cero**\n\n");
+        printf ("\n\nA que base desea convertirlo? \n");
+        scanf ("%d", &x);
+    }
+    return x;
+}
+
+void llenaArreglo (int num [], int digitos, int base1)//Esta subrutina guarda los números que vayamos ingresando en un vector para luego efectuar la conversión
+{
+    int i,x, a;
+    for (i=0; i<digitos; i++)
+    {
+        printf ("\nIntroduce el digito numero %d\n", i+1);
+        scanf("%x", &num[i]);
+        if (num[i]>=base1 || num[i]<0)
+        {
+            printf ("\n**Numero no valido para esta base**\n");
+            printf ("\nIntroduce el digito numero %d\n", i+1);
+            scanf("%x", &num[i]);
+        }
+    }
+
+    printf ("\nEl numero que deseas convertir es: ");
+    for (i=0; i<digitos; i++)
+        printf ("%x", num [i]);
+}
+
+int convertirAdecimal (int num [], int digitos, int base1, int base2) //esta subrutina convierte los numeros a decimal
+{
+    int i, pot;
+    int x=0;
+    for (i=digitos-1, pot=0; i>=0, pot<digitos; i--, pot++)
+    {
+        x+= (pow(base1, pot)* num[i]);
+    }
+    return x;
+}
+
+void convertirAbase (int decimal, int base2) //esta subrutina convierte a las bases que queremos
+{
+    int cociente,residuo,cont, i,j;
+    int conv [50];
+    i=0;
+    do{
+        cociente = decimal/base2;
+        residuo = decimal%base2;
+        conv[i] = residuo;
+        decimal = cociente;
+        i+=1;
+    }while (cociente>0);
+
+    printf("La conversion es: ");
+    for (cont=i-1; cont>=0; cont--)
+    {
+        printf("%x", conv [cont]);
+    }
+    printf("\n\n");
+}
